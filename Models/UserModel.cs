@@ -7,6 +7,6 @@ namespace TeamJacobGroupTaskManagerAppAPI.Models
 {
     public class UserModel
     {
-        
+       
     }
 }
