@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TeamJacobGroupTaskManagerAppAPI.Services.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
