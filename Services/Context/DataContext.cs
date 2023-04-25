@@ -7,6 +7,6 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services.Context
 {
     public class DataContext
     {
-        
+    
     }
 }
