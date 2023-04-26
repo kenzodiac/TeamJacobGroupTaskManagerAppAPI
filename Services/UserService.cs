@@ -7,6 +7,10 @@ using TeamJacobGroupTaskManagerAppAPI.Models.DTO;
 using TeamJacobGroupTaskManagerAppAPI.Services.Context;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using System.Security.Claims;
 
 namespace TeamJacobGroupTaskManagerAppAPI.Services
 {
@@ -55,7 +59,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             PasswordDTO newHashedPassword = new PasswordDTO();
     // This is a byte array with a length of 64
             byte[] SaltByte = new byte[64];
-            var provider = new RNGCrptoServiceProvider();
+            var provider = new RNGCryptoServiceProvider();
 
             provider.GetNonZeroBytes(SaltByte);
 
@@ -92,14 +96,24 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             {
                 // If true, we want to store the user object to create another helper function
                 UserModel foundUser = GetUserByUsername(User.Username);
-
+                // Check if password is correct
                 if(VerifyUserPassword(User.Password, foundUser.Hash, foundUser.Salt))
                 {
-                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+                   var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                     var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-                    var tokeOptions
+                    var tokeOptions = new JwtSecurityToken(
+                        issuer: "http://localhost:5000",
+                        audience: "http://localhost:5000",
+                        claims: new List<Claim>(),
+                        expires: DateTime.Now.AddMinutes(30),
+                        signingCredentials: signinCredentials
+                    );
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+                    Result = Ok(new { Token = tokenString });   
                 }
             }
+
+            return Result;
         }
 
         public UserModel GetUserByUsername(string username)

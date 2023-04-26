@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeamJacobGroupTaskManagerAppAPI.Services;
+using TeamJacobGroupTaskManagerAppAPI.Models;
+using TeamJacobGroupTaskManagerAppAPI.Models.DTO;
 
 namespace TeamJacobGroupTaskManagerAppAPI.Controllers
 {
@@ -41,6 +43,13 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
 
 
         // Update user account
+
+        [HttpPost]
+        [Route("UpdateUser")]
+        public bool UpdateUser(UserModel userToUpdate)
+        {
+            return _data.UpdateUser(userToUpdate);
+        }
 
         // Delete user account
     }
