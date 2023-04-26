@@ -16,5 +16,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Models.DTO
         public int AssignedTo { get; set; }
         public int TaskId { get; set; }
         public bool isDeleted { get; set; }
+
+        public TaskItemModel(){}
     }
 }

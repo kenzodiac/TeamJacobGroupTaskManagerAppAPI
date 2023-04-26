@@ -12,5 +12,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Models
         public string? Salt { get; set; }
         public string? Hash { get; set; }
         public bool isAdmin { get; set; }
+        
+        public UserModel(){}
     }
 }
