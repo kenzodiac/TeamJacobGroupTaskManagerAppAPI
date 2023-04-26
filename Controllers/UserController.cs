@@ -44,12 +44,12 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
 
         // Update user account
 
-        [HttpPost]
-        [Route("UpdateUser")]
-        public bool UpdateUser(UserModel userToUpdate)
-        {
-            return _data.UpdateUser(userToUpdate);
-        }
+        // [HttpPost]
+        // [Route("UpdateUser")]
+        // public bool UpdateUser(UserModel userToUpdate)
+        // {
+        //     return _data.UpdateUser(userToUpdate);
+        // }
 
         // Delete user account
     }
