@@ -116,7 +116,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             return Result;
         }
 
-        public UserModel GetUserByUsername(string username)
+        public UserModel GetUserByUsername(string? username)
         {
             return _context.UserInfo.SingleOrDefault(user => user.Username == username);
         }
