@@ -14,7 +14,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
     public class UserController : ControllerBase
     {
         
-          private readonly UserService _data;
+        private readonly UserService _data;
             public UserController(UserService dataFromService)
             {
                 _data = dataFromService;
@@ -40,17 +40,25 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
           return _data.AddUser(UserToAdd);
         }
 
+        //Update User Account
+        [HttpPost]
+        [Route("UpdateUser")]
+        public bool UpdateUser(UserModel userToUpdate){
+            return _data.UpdateUser(userToUpdate);
+        }
 
+        //Update User's Username
+        [HttpPost]
+        [Route("UpdateUser/{id}/{username}")]
+        public bool UpdateUser(int id, string username){
+            return _data.UpdateUsername(id, username);
+        }
 
-        // Update user account
-
-        // [HttpPost]
-        // [Route("UpdateUser")]
-        // public bool UpdateUser(UserModel userToUpdate)
-        // {
-        //     return _data.UpdateUser(userToUpdate);
-        // }
-
-        // Delete user account
+        //Delete User Account
+        [HttpDelete]
+        [Route("DeleteUser/{userToDelete}")]
+        public bool DeleteUser(string userToDelete){
+            return _data.DeleteUser(userToDelete);
+        }
     }
 }
