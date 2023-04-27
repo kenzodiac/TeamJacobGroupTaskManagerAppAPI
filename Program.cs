@@ -1,12 +1,24 @@
 using Microsoft.EntityFrameworkCore;
+using TeamJacobGroupTaskManagerAppAPI.Services;
 using TeamJacobGroupTaskManagerAppAPI.Services.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<TaskService>();
 
 var connectionString = builder.Configuration.GetConnectionString("MyTaskString");
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddCors(options => {
+    options.AddPolicy("TaskMasterPolicy",
+    builder => {
+        builder.WithOrigins("http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003", "http://localhost:3004")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,6 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("TaskMasterPolicy");
 
 // app.UseHttpsRedirection();
 

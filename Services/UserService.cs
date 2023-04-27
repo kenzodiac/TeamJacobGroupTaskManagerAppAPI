@@ -105,7 +105,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
                         issuer: "http://localhost:5000",
                         audience: "http://localhost:5000",
                         claims: new List<Claim>(),
-                        expires: DateTime.Now.AddMinutes(30),
+                        expires: DateTime.Now.AddDays(30),
                         signingCredentials: signinCredentials
                     );
                     var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
@@ -121,7 +121,35 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             return _context.UserInfo.SingleOrDefault(user => user.Username == username);
         }
 
-        
 
+        public bool UpdateUser(UserModel userToUpdate){
+            _context.Update<UserModel>(userToUpdate);
+            return _context.SaveChanges() != 0;
+        }
+
+        public bool UpdateUsername(int id, string username){
+            UserModel foundUser = GetUserById(id);
+            bool result = false;
+            if(foundUser != null){
+                foundUser.Username = username;
+                _context.Update<UserModel>(foundUser);
+                result = _context.SaveChanges() != 0;
+            }
+            return result;
+        }
+
+        public UserModel GetUserById(int id){
+            return _context.UserInfo.SingleOrDefault(user => user.Id == id);
+        }
+
+        public bool DeleteUser(string userToDelete){
+            UserModel foundUser = GetUserByUsername(userToDelete);
+            bool result = false;
+            if(foundUser != null){
+                _context.Remove<UserModel>(foundUser);
+                result = _context.SaveChanges() != 0;
+            }
+            return result;
+        }
     }
 }

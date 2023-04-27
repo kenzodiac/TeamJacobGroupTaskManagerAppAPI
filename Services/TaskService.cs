@@ -23,5 +23,22 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             _context.Update<TaskItemModel>(TaskDelete);
             return _context.SaveChanges() !=0;
         }
+        
+
+        public bool AddTaskItem(TaskItemModel newTaskItem)
+        {
+            _context.Add(newTaskItem);
+            return _context.SaveChanges() != 0;
+        }
+
+         public IEnumerable<TaskItemModel> GetAllTaskItems()
+        {
+            return _context.TaskInfo;
+        }
+
+          public IEnumerable<TaskItemModel> GetTasksByAsignee(int AssignedTo)
+        {
+            return _context.TaskInfo.Where(item => item.AssignedTo == AssignedTo);
+        }
     }
 }

@@ -31,5 +31,26 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
         public bool deleteTask(TaskItemModel TaskDelete){
             return _data.deleteTask(TaskDelete);
         }
+
+        [HttpPost]
+        [Route("AddTaskItem")]
+        public bool AddTaskItem(TaskItemModel newTaskItem)
+        {
+            return _data.AddTaskItem(newTaskItem);
+        }
+
+        [HttpGet]
+        [Route("GetAllTaskItems")]
+        public IEnumerable<TaskItemModel> GetAllTaskItems()
+        {
+            return _data.GetAllTaskItems();
+        }
+
+        [HttpGet]
+        [Route("GetTasksByAsignee/{AssignedTo}")]
+        public IEnumerable<TaskItemModel> GetTasksByAsignee(int AssignedTo)
+        {
+            return _data.GetTasksByAsignee(AssignedTo);
+        }
     }
 }
