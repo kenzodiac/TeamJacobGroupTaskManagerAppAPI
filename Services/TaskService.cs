@@ -26,7 +26,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             return _context.TaskInfo;
         }
 
-          public IEnumerable<TaskItemModel> GetTasksByAsignee(string AssignedTo)
+          public IEnumerable<TaskItemModel> GetTasksByAsignee(int AssignedTo)
         {
             return _context.TaskInfo.Where(item => item.AssignedTo == AssignedTo);
         }
