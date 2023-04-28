@@ -7,6 +7,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Models.DTO
 {
     public class TaskItemModel
     {
+         public int Id { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? DueDate { get; set; }
@@ -14,7 +15,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Models.DTO
         public string? Status { get; set; }
         public int AssignedBy { get; set; }
         public int AssignedTo { get; set; }
-        public int TaskId { get; set; }
+       
         public bool isDeleted { get; set; }
 
         public TaskItemModel(){}
