@@ -155,10 +155,20 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
         public IEnumerable<UsersByIdDTO> GetAllUsers(){
             var users = _context.UserInfo;
             var userDTOs = users.Select(u => new UsersByIdDTO{
-                Id = u.Id.ToString(),
-                Username = u.Username
+                Id = u.Id,
+                Username = u.Username,
+                isAdmin = u.isAdmin
             }).ToList();
             return userDTOs;
+        }
+
+         public UsersByIdDTO GetUserIdDTOByUserName(string userName){
+            var userInfo = new UsersByIdDTO();
+            var foundUser = _context.UserInfo.SingleOrDefault(user => user.Username == userName);
+            userInfo.Id = foundUser.Id;
+            userInfo.Username = foundUser.Username;
+            userInfo.isAdmin = foundUser.isAdmin;
+            return userInfo;
         }
     }
 }

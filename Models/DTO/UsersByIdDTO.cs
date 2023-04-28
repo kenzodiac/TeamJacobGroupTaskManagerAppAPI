@@ -7,7 +7,8 @@ namespace TeamJacobGroupTaskManagerAppAPI.Models.DTO
 {
     public class UsersByIdDTO
     {
-        public string? Id { get; set; }
+        public int Id { get; set; }
         public string? Username { get; set; }
+        public bool isAdmin { get; set; }
     }
 }
