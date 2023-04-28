@@ -45,6 +45,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
                 newUser.Username = UserToAdd.Username;
                 newUser.Salt = hashPassword.Salt;
                 newUser.Hash = hashPassword.Hash;
+                newUser.isAdmin = UserToAdd.isAdmin;
 
                 _context.Add(newUser);
 
