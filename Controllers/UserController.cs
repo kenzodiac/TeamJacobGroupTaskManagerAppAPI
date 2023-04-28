@@ -60,5 +60,12 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
         public bool DeleteUser(string userToDelete){
             return _data.DeleteUser(userToDelete);
         }
+
+        //Get All Users
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public IEnumerable<UserModel> GetAllUsers(){
+            return _data.GetAllUsers();
+        }
     }
 }
