@@ -21,8 +21,8 @@ namespace TeamJacobGroupTaskManagerAppAPI.Migrations
                     DueDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Priority = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AssignedBy = table.Column<int>(type: "int", nullable: false),
-                    AssignedTo = table.Column<int>(type: "int", nullable: false),
+                    AssignedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AssignedTo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     isDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

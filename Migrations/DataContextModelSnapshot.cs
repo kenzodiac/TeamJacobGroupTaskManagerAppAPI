@@ -29,11 +29,11 @@ namespace TeamJacobGroupTaskManagerAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AssignedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("AssignedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AssignedTo")
-                        .HasColumnType("int");
+                    b.Property<string>("AssignedTo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");

@@ -11,7 +11,7 @@ using TeamJacobGroupTaskManagerAppAPI.Services.Context;
 namespace TeamJacobGroupTaskManagerAppAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230427190043_init")]
+    [Migration("20230428172633_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -32,11 +32,11 @@ namespace TeamJacobGroupTaskManagerAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AssignedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("AssignedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AssignedTo")
-                        .HasColumnType("int");
+                    b.Property<string>("AssignedTo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");

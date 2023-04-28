@@ -48,7 +48,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
 
         [HttpGet]
         [Route("GetTasksByAsignee/{AssignedTo}")]
-        public IEnumerable<TaskItemModel> GetTasksByAsignee(int AssignedTo)
+        public IEnumerable<TaskItemModel> GetTasksByAsignee(string AssignedTo)
         {
             return _data.GetTasksByAsignee(AssignedTo);
         }
