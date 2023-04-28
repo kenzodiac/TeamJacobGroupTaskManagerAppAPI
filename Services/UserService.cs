@@ -152,13 +152,13 @@ namespace TeamJacobGroupTaskManagerAppAPI.Services
             return result;
         }
 
-        public IEnumerable<UserModel> GetAllUsers(){
-            // var users = _context.UserInfo;
-            // var userDTOs = users.Select(u => new UsersByIdDTO{
-            //     Id = u.Id.ToString(),
-            //     Username = u.Username
-            // }).ToList();
-            return _context.UserInfo;
+        public IEnumerable<UsersByIdDTO> GetAllUsers(){
+            var users = _context.UserInfo;
+            var userDTOs = users.Select(u => new UsersByIdDTO{
+                Id = u.Id.ToString(),
+                Username = u.Username
+            }).ToList();
+            return userDTOs;
         }
     }
 }
