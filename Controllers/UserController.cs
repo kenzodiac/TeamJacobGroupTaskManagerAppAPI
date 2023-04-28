@@ -64,7 +64,7 @@ namespace TeamJacobGroupTaskManagerAppAPI.Controllers
         //Get All Users
         [HttpGet]
         [Route("GetAllUsers")]
-        public IEnumerable<UserModel> GetAllUsers(){
+        public IEnumerable<UsersByIdDTO> GetAllUsers(){
             return _data.GetAllUsers();
         }
     }
